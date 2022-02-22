@@ -2,7 +2,8 @@
 
 This is a clone project of the popular word guessing game we all know and love. Made using React, Typescript, and Tailwind.
 
-[**Try out the demo!**](https://reactle.vercel.app/)
+
+[**From the Github Repo**](https://github.com/cwackerfuss/react-wordle.git)
 
 ## Build and run
 
@@ -36,10 +37,13 @@ $> docker run -d -p 80:80 game:prod
 
 Open [http://localhost](http://localhost) in browser.
 
+## Deploy on [Nife](https://www.ui-apps.nifetency.com)
+[Watch the demo](https://www.youtube.com/watch?v=HyggE-WL9q8)
+
 ## Projects built using this repo
 
 ### Other languages
-
+- [Reactle] (https://reactle.vercel.app/):English
 - [Arwordle](https://arwordle.netlify.app/): Arabic
 - [Boludle](https://www.boludle.com/): Argentinian
 - [Gerdle](https://gerdle.vext.co.uk/): Cornish (Kernowek)
