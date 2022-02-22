@@ -40,6 +40,8 @@ Open [http://localhost](http://localhost) in browser.
 ## Deploy on [Nife](https://www.ui-apps.nifetency.com)
 [Watch the demo](https://www.youtube.com/watch?v=HyggE-WL9q8)
 
+- On Nife internal port can be 3000 and external port 80
+
 ## Projects built using this repo
 
 ### Other languages
