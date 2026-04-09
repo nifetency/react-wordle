@@ -170,3 +170,236 @@ To enable Plausible Analytics:
 
 - Create a new website with Plausible Analytics with a given domain, e.g. `example.app`
 - In [.env](.env), add `REACT_APP_PLAUSIBLE_DOMAIN=example.app`
+
+## Deployment on NIFE
+
+Deploy your application using the NIFE platform:
+
+https://launch.nife.io/
+
+Deployment flow:
+
+```
+Source → Build → Resources → Review → Deploy
+```
+
+Prerequisite: Ensure a workload (Deployment, CronJob, or StatefulSet) exists.
+
+---
+
+## Method 1: Deploy via Docker Image 
+
+### Step 1: Build and Push Image
+
+```bash
+docker build -t react-wordle .
+docker tag react-wordle <username>/react-wordle:latest
+docker push <username>/react-wordle:latest
+```
+
+---
+
+### Step 2: Configure Source
+
+* Source: Docker Image
+* Registry: Docker Hub
+* Image: `<username>/react-wordle:latest`
+* Tag: `latest`
+
+---
+
+### Step 3: Build Configuration
+
+* Internal Port: `3000`
+* External Port: `80`
+
+Optional environment variables:
+
+| Key      | Value      |
+| -------- | ---------- |
+| NODE_ENV | production |
+
+---
+
+### Step 4: Resources Configuration
+
+* Region: e.g., `ap-south-1`
+* Resource Type: CPU
+
+Recommended settings:
+
+* CPU Request: `250m`
+* Memory Request: `512MB`
+* CPU Limit: `500m`
+* Memory Limit: `1GB`
+
+---
+
+### Step 5: Deploy
+
+* Strategy: Rolling
+* Workload: Deployment
+* Routing Policy: Latency
+* Replicas: 1–2
+
+Click Deploy.
+
+---
+
+## Method 2: Deploy via Git Repository
+
+### Step 1: Select Source
+
+* Source: Git Repository
+* Provider: GitHub
+* Branch: `main`
+
+---
+
+### Step 2: Build Configuration
+
+* Internal Port: `3000`
+* External Port: `80`
+
+Enable:
+
+```
+Auto-Dockerize with Runtime
+```
+
+---
+
+### Step 3: Build and Security
+
+NIFE automatically performs:
+
+* SAST
+* SCA
+* Container scan
+* IaC scan
+
+Resolve any critical issues before proceeding.
+
+---
+
+### Step 4: Resources and Deploy
+
+Use the recommended configuration above and deploy.
+
+---
+
+## Deployment using nifectl (CLI)
+
+You can deploy the application using the nifectl CLI.
+
+---
+
+### Install nifectl CLI (Windows)
+
+#### 1. Download
+
+https://github.com/nifetency/nifectl/releases/tag/v4.1.3-dev
+
+Download:
+
+```
+nifectl-windows-amd64.zip
+```
+
+---
+
+#### 2. Extract
+
+* Right-click the ZIP file
+* Select Extract All
+* Open the extracted folder
+
+---
+
+#### 3. Open Terminal
+
+* Type `cmd` in the address bar
+  or
+* Right-click and select Open in Terminal
+
+---
+
+#### 4. Verify Installation
+
+```bash
+nifectl --help
+```
+
+---
+
+### Step 1: Login
+
+```bash
+nifectl auth login
+```
+
+---
+
+### Step 2: Initialize Project
+
+```bash
+nifectl init
+```
+
+Provide:
+
+* Application name
+* Organization
+* Repository URL
+* Branch (`main`)
+
+---
+
+### Step 3: Configure Deployment
+
+* Deployment Type: Deployment
+* Resource Type: CPU
+* Replicas: 1
+
+Ports:
+
+* Internal: `3000`
+* External: `80`
+
+---
+
+### Step 4: Deploy
+
+```bash
+nifectl deploy
+```
+
+---
+
+### Step 5: Select Region
+
+Example:
+
+```
+IND - Mumbai
+```
+
+---
+
+### Step 6: Monitor Deployment
+
+Monitor logs for:
+
+* Validation
+* Build
+* Deployment
+
+---
+
+### Step 7: Access Application
+
+```
+https://<your-nife-url>
+```
+
+---
