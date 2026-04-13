@@ -1,118 +1,108 @@
 # React Wordle
 
+A simple **React-based web application** published as a **sample deployment project for [Nife.io][1]**.
+
+This repository demonstrates how to run a lightweight React application locally, package it with Docker, and deploy it on [Nife.io][1]. It is intended as a practical sample for validating frontend deployment workflows, container-based delivery, and modern UI applications.[1][2]
+
+---
+
 ## Overview
 
-A clone of the popular Wordle game built using:
+This project is a clone of the popular Wordle game built using React, TypeScript, and Tailwind CSS. It demonstrates modern frontend development practices, state management, and interactive UI design.[3]
 
-- React
-- TypeScript
-- Tailwind CSS
-
-This project demonstrates:
-- Modern frontend development
-- State management in React
-- Interactive UI design
-
-Originally based on:
-https://github.com/cwackerfuss/react-wordle
+If you want a simple frontend project to test deployment on [Nife.io][1], this repository is a good starting point.
 
 ---
 
-## Requirements
+## Features
 
-Make sure you have the following installed:
-
-- Node.js
-- npm
-- Git
+| Feature                | Description                            |
+| ---------------------- | -------------------------------------- |
+| Word guessing game     | Interactive Wordle-style gameplay      |
+| Modern UI              | Built with React and Tailwind CSS      |
+| Type safety            | Uses TypeScript                        |
+| Responsive design      | Works across devices                   |
+| Deployment-ready setup | Supports Docker and Nife.io deployment |
 
 ---
 
-## Installation
+## Tech Stack
 
-### 1. Clone the Repository
+| Technology   | Purpose             |
+| ------------ | ------------------- |
+| React        | Frontend framework  |
+| TypeScript   | Type safety         |
+| Tailwind CSS | Styling             |
+| Node.js      | Runtime environment |
+| Docker       | Container packaging |
+| Nife.io      | Deployment platform |
+
+---
+
+## Prerequisites
+
+Before running the project locally, make sure the following are installed.
+
+| Requirement | Notes                        |
+| ----------- | ---------------------------- |
+| Node.js     | Installed and configured     |
+| npm         | Comes with Node.js           |
+| Git         | Required to clone repository |
+
+---
+
+## Getting Started
+
+### Clone the repository
 
 ```bash
 git clone https://github.com/cwackerfuss/react-wordle.git
 cd react-wordle
 ```
 
----
-
-### 2. Install Dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
----
-
-### 3. Run the Application
+### Run the application
 
 ```bash
 npm run start
 ```
 
----
-
-### 4. Open in Browser
-
-Visit:
-
-```
-http://localhost:3000
-```
+Then open the application at `http://localhost:3000`.
 
 ---
 
-## Run with Docker (Optional)
+## Run with Docker
 
-### Development
+This project includes a Dockerfile for container-based execution.
+
+### Build the image
 
 ```bash
-docker build -t react-wordle:dev .
-docker run -d -p 3000:3000 react-wordle:dev
+docker build -t react-wordle .
 ```
 
----
-
-### Production
+### Run the container
 
 ```bash
-docker build --target=prod -t react-wordle:prod .
-docker run -d -p 80:80 react-wordle:prod
+docker run -p 3000:3000 react-wordle
 ```
 
----
-
-## Features
-
-- Word guessing gameplay
-- Interactive UI
-- Responsive design
-- Multiple language support (customizable)
+After the container starts, open the app at `http://localhost:3000`.
 
 ---
 
-## Deployment on NIFE
+## Deploy on Nife.io
 
-Deploy your application using the NIFE platform:
+You can deploy this application on [Nife.io][1] using either a Docker image, the source repository, or the CLI.[1][2]
 
-https://launch.nife.io/
+### Option 1: Deploy from a Docker image
 
-Deployment flow:
-
-```text
-Source → Build → Resources → Review → Deploy
-```
-
-Prerequisite: Ensure a workload (Deployment, CronJob, or StatefulSet) exists.
-
----
-
-## Method 1: Deploy via Docker Image
-
-### Step 1: Build and Push Image
+First, build and push the image to your preferred container registry.
 
 ```bash
 docker build -t react-wordle .
@@ -120,231 +110,88 @@ docker tag react-wordle <username>/react-wordle:latest
 docker push <username>/react-wordle:latest
 ```
 
----
+Then configure a new application in Nife.io with the following settings.
 
-### Step 2: Configure Source
-
-- Source: Docker Image
-- Registry: Docker Hub
-- Image: `<username>/react-wordle:latest`
-- Tag: `latest`
-
----
-
-### Step 3: Build Configuration
-
-- Internal Port: `3000`
-- External Port: `80`
-
-Optional environment variables:
-
-| Key      | Value      |
-|----------|------------|
-| NODE_ENV | production |
+| Setting            | Value                                    |
+| ------------------ | ---------------------------------------- |
+| Source             | Docker Image                             |
+| Registry           | Docker Hub or another supported registry |
+| Image              | `<username>/react-wordle:latest`         |
+| Internal Port      | `3000`                                   |
+| External Port      | `80`                                     |
+| Suggested Replicas | `1`                                      |
 
 ---
 
-### Step 4: Resources Configuration
+### Option 2: Deploy from the Git repository
 
-- Region: e.g., `ap-south-1`
-- Resource Type: CPU
+You can also deploy the project directly from GitHub.
 
-Recommended settings:
-
-- CPU Request: `250m`
-- Memory Request: `512MB`
-- CPU Limit: `500m`
-- Memory Limit: `1GB`
-
----
-
-### Step 5: Deploy
-
-- Strategy: Rolling
-- Workload: Deployment
-- Routing Policy: Latency
-- Replicas: 1–2
-
-Click **Deploy**.
+| Setting       | Value                       |
+| ------------- | --------------------------- |
+| Source        | Git Repository              |
+| Provider      | GitHub                      |
+| Branch        | `main`                      |
+| Internal Port | `3000`                      |
+| External Port | `80`                        |
+| Build Mode    | Auto-Dockerize with runtime |
 
 ---
 
-## Method 2: Deploy via Git Repository
+### Option 3: Deploy with `nifectl`
 
-### Step 1: Select Source
-
-- Source: Git Repository
-- Provider: GitHub
-- Branch: `main`
-
----
-
-### Step 2: Build Configuration
-
-- Internal Port: `3000`
-- External Port: `80`
-
-Enable:
-
-```
-Auto-Dockerize with Runtime
-```
-
----
-
-### Step 3: Build and Security
-
-NIFE automatically performs:
-
-- SAST
-- SCA
-- Container scan
-- IaC scan
-
-Resolve any critical issues before proceeding.
-
----
-
-### Step 4: Resources and Deploy
-
-Use the recommended configuration above and deploy.
-
----
-
-## Deployment using nifectl (CLI)
-
-### Step 1: Download nifectl
-
-https://docs.nife.io/Quick-Start/Nifectl
-
----
-
-### Step 2: Open Terminal
-
-- Type `cmd` in the address bar  
-  OR  
-- Right-click → **Open in Terminal**
-
----
-
-### Step 3: Verify Installation
-
-```bash
-nifectl --help
-```
-
----
-
-## Deployment Steps
-
-### Step 1: Login
+If you prefer the command line, use the following workflow.
 
 ```bash
 nifectl auth login
-```
-
----
-
-### Step 2: Initialize Project
-
-```bash
 nifectl init
-```
-
-Provide:
-- Application name
-- Organization
-- Repository URL
-- Branch (`main`)
-
----
-
-### Step 3: Configure Deployment
-
-- Deployment Type: Deployment
-- Resource Type: CPU
-- Replicas: 1
-
-Ports:
-- Internal: `3000`
-- External: `80`
-
----
-
-### Step 4: Deploy
-
-```bash
 nifectl deploy
 ```
 
----
-
-### Step 5: Select Region
-
-Example:
-
-```
-IND - Mumbai
-```
-
----
-
-### Step 6: Monitor Deployment
-
-Monitor logs for:
-- Validation
-- Build
-- Deployment
-
----
-
-### Step 7: Access Application
-
-```
-https://<your-nife-url>
-```
-
----
-
-## Dependencies
-
-| Dependency  | Purpose                |
-|-------------|------------------------|
-| React       | Frontend framework     |
-| TypeScript  | Type safety            |
-| Tailwind CSS| Styling                |
-| Node.js     | Runtime environment    |
+For step-by-step instructions, see the [Nife.io Quick Deploy documentation][2] and the [nifectl quick start guide][4].
 
 ---
 
 ## Environment Variables
 
-| Variable | Description             | Default     |
-|----------|-------------------------|-------------|
-| NODE_ENV | Application environment | development |
+The following variables are commonly relevant for deployment.
+
+| Variable | Description             | Example      |
+| -------- | ----------------------- | ------------ |
+| NODE_ENV | Application environment | `production` |
+
+---
+
+## Repository Structure
+
+| Path            | Purpose                      |
+| --------------- | ---------------------------- |
+| `src/`          | Application source code      |
+| `public/`       | Static assets                |
+| `Dockerfile`    | Container build instructions |
+| `package.json`  | Project dependencies         |
+| `tsconfig.json` | TypeScript configuration     |
 
 ---
 
 ## Troubleshooting
 
-| Issue                   | Solution                                  |
-|------------------------|--------------------------------------------|
-| Port already in use    | Change port or stop running process        |
-| Node not installed     | Install Node.js (`node -v`)                |
-| Dependencies missing   | Run `npm install`                          |
-| App not starting       | Check logs and configuration               |
-| Docker build fails     | Verify Dockerfile                          |
-| Deployment fails       | Check logs and environment variables       |
-| App not accessible     | Verify port mapping and routing            |
+| Issue                       | Suggested fix                 |
+| --------------------------- | ----------------------------- |
+| Port already in use         | Change port or stop process   |
+| Dependencies not installed  | Run `npm install`             |
+| App not starting            | Check logs and configuration  |
+| Docker build fails          | Verify Dockerfile             |
+| Deployment fails on Nife.io | Check ports and configuration |
+| App not accessible          | Verify routing and logs       |
 
 ---
 
 ## Acknowledgements
 
-This repository is maintained by Nifetency as a sample deployment project for Nife.io.
+This repository is maintained by **Nifetency** as a sample deployment project for [Nife.io](https://nife.io).
 
-If derived from an upstream example, proper credit should be given to the original author.
-
+If this repository is derived from an earlier template or upstream example, it is good practice to retain visible credit to the original author or source repository.
 ---
 
 ## License
@@ -355,5 +202,7 @@ This project is licensed under the MIT License.
 
 ## References
 
-- Original Repository: https://github.com/cwackerfuss/react-wordle
-- NIFE Platform: https://nife.io/
+[1]: https://nife.io "Nife.io"
+[2]: https://docs.nife.io/overview/quick-deploy "Nife.io Quick Deploy"
+[3]: https://github.com/cwackerfuss/react-wordle "react-wordle"
+[4]: https://docs.nife.io/Quick-Start/Nifectl "Nifectl Quick Start"
