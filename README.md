@@ -204,5 +204,5 @@ This project is licensed under the MIT License.
 
 1. [Nife.io](https://nife.io)  
 2. [Nife Docs Overview](https://docs.nife.io/overview/)  
-3. [Original Repository](https://github.com/wackerfuss/node-multiplayer-snake)  
+3. [Original Repository](https://github.com/nifetency/react-wordle)  
 4. [Nife Quick Start](https://docs.nife.io/Quick-Start)
