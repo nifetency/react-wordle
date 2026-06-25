@@ -1,3 +1,18 @@
+<div align="center">
+
+<h3 align="center"><b><u>Deploy this project Instantly</u></b></h3>
+
+<a href="https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nifetency/react-wordle">
+  <img
+    src="https://launch.nife.io/deploy-on-nife.svg"
+    alt="Deploy on NIFE"
+    width="280"
+  />
+</a>
+
+</div>
+
+
 # React Wordle
 
 A simple **React-based web application** published as a **sample deployment project for [Nife.io][1]**.
@@ -149,14 +164,6 @@ nifectl deploy
 ```
 
 For step-by-step instructions, see the [Nife.io Quick Deploy documentation][2] and the [nifectl quick start guide][4].
-
-## Option 4: Deploy on NIFE OneClick
-
-Launch your own instance of **React Wordle** with a single click.
-
-### Deploy as Site
-
-[![Deploy Site on OneClick](https://img.shields.io/badge/🌐%20Deploy%20Site%20on%20OneClick-22C55E?style=for-the-badge)](https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nifetency/react-wordle)
 
 ---
 
