@@ -150,6 +150,14 @@ nifectl deploy
 
 For step-by-step instructions, see the [Nife.io Quick Deploy documentation][2] and the [nifectl quick start guide][4].
 
+## Option 4: Deploy on NIFE OneClick
+
+Launch your own instance of **React Wordle** with a single click.
+
+### Deploy as Site
+
+[![Deploy Site on OneClick](https://img.shields.io/badge/🌐%20Deploy%20Site%20on%20OneClick-22C55E?style=for-the-badge)](https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nifetency/react-wordle)
+
 ---
 
 ## Environment Variables
@@ -203,6 +211,7 @@ This project is licensed under the MIT License.
 ## References
 
 1. (https://nife.io)  
-2. (https://docs.nife.io/overview/)  
-3. (https://docs.nife.io/Quick-Start)
+2. (https://docs.nife.io/overview/) 
+3.  (https://docs.nife.io/deploy/node/react-wordle/)
+4. (https://docs.nife.io/Quick-Start)
  
