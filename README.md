@@ -2,7 +2,7 @@
 
 <h3 align="center"><b><u>Deploy this project Instantly</u></b></h3>
 
-<a href="https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nifetency/react-wordle">
+<a href="https://launch.nife.io/deploy-site/start?repository-url=https://github.com/nife-public/react-wordle">
   <img
     src="https://launch.nife.io/deploy-on-nife.svg"
     alt="Deploy on NIFE"
